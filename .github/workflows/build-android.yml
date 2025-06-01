@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout last commit
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
@@ -56,7 +56,7 @@ jobs:
         cache: 'gradle'
 
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v2
+      uses: android-actions/setup-android@v3
 
     - name: Build APP
       env:
@@ -70,7 +70,7 @@ jobs:
         ./gradlew assembleRelease --no-daemon
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: whisper-android-example-${{github.event.inputs.language}}-${{github.event.inputs.model}}.zip
         path: examples/whisper.android/app/build/outputs/apk
